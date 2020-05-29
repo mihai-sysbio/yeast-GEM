@@ -82,7 +82,10 @@ newFormula = updatemets(:,3);
 currentCharge = str2double(updatemets(:,4));
 newCharge = str2double(updatemets(:,5));
 MNXNotes = updatemets(:,11);
-metResults{500,6} = [];
+metResults{size(updatemets,1)*5,6} = [];
+metResults(1,:) = [{'Metabolites'},{'Unbalanced reaction(s) before modification (UB)'},...
+    {'Unbalanced reaction after modification (UA)'},{'Number of UB'},...
+    {'Number of UA'},{'Number of balanced reactions'}];
 
 for i = 1:length(metNames)
     idx_met = find(ismember(modelR.metNames,metNames(i)));
@@ -133,24 +136,24 @@ for i = 1:length(metNames)
 end
 
 %Modification of H+/H2O/other metabolite coefficient to balance equation
-temp = erase(updateSmatrix(:,1),'"');
-idx = str2num(char(temp));
-met2 = updateSmatrix(:,2);
-rxn2 = updateSmatrix(:,3);
+met2 = updateSmatrix(:,1);
+rxn2 = updateSmatrix(:,2);
+[~,idx_met2] = ismember(met2,model.mets);
 [~,idx_rxn2] = ismember(rxn2,model.rxns);
-currentCoef = str2double(updateSmatrix(:,4));
-newCoef = str2double(updateSmatrix(:,5));
+currentCoef = str2double(updateSmatrix(:,3));
+newCoef = str2double(updateSmatrix(:,4));
 
-for i = 1:length(idx)
-    currentmetCoef = model.S(idx(i,1),idx(i,2));
+for i = 1:length(updateSmatrix)
+    currentmetCoef = model.S(idx_met2(i),idx_rxn2(i));
     if isequal(currentmetCoef,currentCoef(i)) && ~isnan(newCoef(i))
-        model.S(idx(i,1),idx(i,2)) = newCoef(i);
+        model.S(idx_met2(i),idx_rxn2(i)) = newCoef(i);
         model.rxnNotes(idx_rxn2(i)) = join([model.rxnNotes(idx_rxn2(i)),'| model.S(',...
-                cellstr(string(temp(i))),') curated (PR #222)']);
+                cellstr(string(idx_met2(i))),',',cellstr(string(idx_rxn2(i))),') curated (PR #222)']);
         model.rxnNotes(idx_rxn2(i)) = strrep(model.rxnNotes(idx_rxn2(i)),'( ','(');
         model.rxnNotes(idx_rxn2(i)) = strrep(model.rxnNotes(idx_rxn2(i)),' )',')');
+        model.rxnNotes(idx_rxn2(i)) = strrep(model.rxnNotes(idx_rxn2(i)),' , ',',');
     elseif ~isequal(currentmetCoef,currentCoef(i))
-        warning('error with metCoef matching in modMetsandSmatrix.tsv for %s, idx_rxn: %d', string(rxn2(i)), idx(i,2));
+        warning('error with metCoef matching in modMetsandSmatrix.tsv for %s, idx_rxn: %d', string(rxn2(i)), idx_rxn2(i));
     end
 end 
 
@@ -191,9 +194,9 @@ for i = 1:length(metNames)
 end
 
 %Check of metBalance/metCharges after change (for updateSmatrix)
-metResults2{length(idx),5} = [];
-for i = 1:length(idx)
-    rxn = updateSmatrix(i,3);
+metResults2{size(updateSmatrix,1),5} = [];
+for i = 1:size(updateSmatrix,1)
+    rxn = updateSmatrix(i,2);
     MassChargeresults2 = checkMassChargeBalance(model,rxn);
     metResults2(i,:) = MassChargeresults2;
 end
