@@ -1,7 +1,25 @@
 % This function is to identify charge and mass balance for reactions
 %
 % Input: model and reaction identifier(s) in model.rxns (e.g. 'r_0001')
-% Output: result with pass or error
+% Output: MassChargeresults
+%         For exchange reactions:
+%         reaction identifier(s) and 'exchange' will be displayed in
+%         MassChargeresults
+%
+%         For balanced reactions:
+%         reaction identifier(s) and 'pass' will be displayed in
+%         MassChargeresults
+%
+%         For reaction identifier(s) which does not match model.rxns: 
+%         'rxnID not found' and 'manual check required' will be displayed
+%         in MassChargeresults
+%
+%         For reactions with elemental and/or charge imbalance(s):  
+%         reaction identifier(s), specific issue causing imbalance(s), 
+%         individual charges of each metabolite in the reaction, sum of all 
+%         charges in the reaction and elemental difference will be 
+%         displayed in MassChargeresults
+%
 % NOTE: getElementalBalance.m is a function from RAVEN
 %
 % modified from Feiran Li's script 'checkBalanceforSce.m'
@@ -71,12 +89,12 @@ for i = 1:length(rxn)
                 MassChargeresults(arrayidx,2) = {'unbalanced due to missing information'};
                 MassChargeresults(arrayidx,3) = {indvCharge};
                 MassChargeresults(arrayidx,4) = {balanceCharge};
-                MassChargeresults(arrayidx,5) = {'manual check required'};
+                MassChargeresults(arrayidx,5) = {'-'};
             end
         end
     else
         arrayidx = find(cellfun('isempty', MassChargeresults),1);
-        MassChargeresults(arrayidx,1) = {'unbalanced due to error'};
+        MassChargeresults(arrayidx,1) = {'rxnID not found'};
         MassChargeresults(arrayidx,2) = {'manual check required'};
     end
 end
