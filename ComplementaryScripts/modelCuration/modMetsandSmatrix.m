@@ -51,25 +51,29 @@ CONValldata = cat(2,model.compNames,model.comps);
 comps = CONValldata(b,2);
 
 for i = 1:length(metList)
-        newID = getNewIndex(model.mets);
-        mets(i) = strcat('s_',newID,'[',comps(i),']');
-        model = addMetabolite(model,char(mets(i)), ...
-            'metName',metList{i},'metFormula', ...
-            metFormula{i},'Charge',metCharge{i}, ...
-            'ChEBIID',metChEBIID{i},'KEGGId',metKEGGID{i});
-        %Manually add MetaNetXID as addMetabolite does not include it
-        met_idx = find(ismember(model.mets,mets(i)));
-        model.metMetaNetXID(met_idx) = metMetaNetXID(i);
+    cd otherChanges/
+    newID = getNewIndex(model.mets);
+    cd ../
+    mets(i) = strcat('s_',newID,'[',comps(i),']');
+    model   = addMetabolite(model,char(mets(i)), ...
+                            'metName',metList{i},'metFormula', ...
+                            metFormula{i},'Charge',metCharge{i}, ...
+                            'ChEBIID',metChEBIID{i},'KEGGId',metKEGGID{i});
+    %Manually add MetaNetXID as addMetabolite does not include it
+    met_idx = find(ismember(model.mets,mets(i)));
+    model.metMetaNetXID(met_idx) = metMetaNetXID(i);
 end
 
-cd modelCuration
+cd modelCuration/
 
 %Modify the following rxns:
 %r_0687: L-proline is replaced by trans-4-hydroxy-L-proline
 model = changerxn(model, 'r_0687', '1-pyrroline-3-hydroxy-5-carboxylic&acid [cytoplasm] + 2 H+ [cytoplasm] + NADPH [cytoplasm]  -> trans-4-hydroxy-L-proline [cytoplasm] + NADP(+) [cytoplasm]');
 %r_4577: 3-hydroxy-3-methyl-2-oxobutanoate is replaced by 2,3-dihydroxy-3-methylbutanoate
 model = changerxn(model, 'r_4577', '3-methyl-2-oxobutanoate [cytoplasm] + H2O [cytoplasm]  -> 2,3-dihydroxy-3-methylbutanoate [cytoplasm]');
+cd ../missingFields/
 model = addSBOterms(model); %Add SBO terms
+cd ../modelCuration/
 model = rmfield(model,'grRules'); %remove field 'grRules' in model
 
 %Correction of metFormula and metCharges to balance equation
@@ -84,8 +88,8 @@ newCharge = str2double(updatemets(:,5));
 MNXNotes = updatemets(:,11);
 metResults{size(updatemets,1)*5,6} = [];
 metResults(1,:) = [{'Metabolites'},{'Unbalanced reaction(s) before modification (UB)'},...
-    {'Unbalanced reaction after modification (UA)'},{'Number of UB'},...
-    {'Number of UA'},{'Number of balanced reactions'}];
+                   {'Unbalanced reaction after modification (UA)'},{'Number of UB'},...
+                   {'Number of UA'},{'Number of balanced reactions'}];
 
 for i = 1:length(metNames)
     idx_met = find(ismember(modelR.metNames,metNames(i)));
