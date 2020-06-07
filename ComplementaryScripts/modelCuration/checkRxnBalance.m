@@ -15,18 +15,20 @@
 %         in MassChargeresults
 %
 %         For reactions with elemental and/or charge imbalance(s):  
-%         reaction identifier(s), specific issue causing imbalance(s), 
-%         individual charges of each metabolite in the reaction, sum of all 
-%         charges in the reaction and elemental difference will be 
-%         displayed in MassChargeresults
+%         reaction identifier(s), specific imbalance issue(s) to check, 
+%         individual charges of each metabolite in the reaction (if there 
+%         is charge difference), charge difference and elemental difference
+%         will be displayed in MassChargeresults
 %
 % NOTE: getElementalBalance.m is a function from RAVEN
+%
+% Usage: MassChargeresults = checkRxnBalance(model,rxn)
 %
 % modified from Feiran Li's script 'checkBalanceforSce.m'
 %
 % Cheng Wei Quan (Eiden), 2020-05-06
 
-function MassChargeresults = checkMassChargeBalance(model,rxn)
+function MassChargeresults = checkRxnBalance(model,rxn)
 exchangeRxns = findExcRxns(model);
 MassChargeresults{length(rxn),5} = [];
 for i = 1:length(rxn)
