@@ -36,6 +36,9 @@ cd missingFields
 model = addSBOterms(model);
 cd ..
 
+%Save "proteins" ("fbc:name" in the xml file) = "geneNames" ("fbc:label" in the xml file):
+model.proteins = model.geneNames;
+
 %Check if model is a valid SBML structure:
 writeCbModel(model,'sbml','tempModel.xml');
 [~,errors] = TranslateSBML('tempModel.xml');

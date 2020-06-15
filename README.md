@@ -10,13 +10,13 @@ This repository contains the current consensus genome-scale metabolic model of _
 
 **GEM Category:** species; **Utilisation:** experimental data reconstruction, multi-omics integrative analysis, _in silico_ strain design, model template; **Field:** metabolic-network reconstruction; **Type of Model:** reconstruction, curated; **Model Source:** YeastMetabolicNetwork; **Omic Source:** genomics, metabolomics; **Taxonomy:** _Saccharomyces cerevisiae_; **Metabolic System:** general metabolism; **Bioreactor**; **Strain:** S288C; **Condition:** aerobic, glucose-limited, defined media;
 
-* Last update: 2020-03-31
+* Last update: 2020-06-12
 
 * Main Model Descriptors:
 
 |Taxonomy | Template Model | Reactions | Metabolites| Genes |
 |:-------:|:--------------:|:---------:|:----------:|:-----:|
-|_Saccharomyces cerevisiae_|[Yeast 7.6](https://sourceforge.net/projects/yeast/)|3991|2691|1147|
+|_Saccharomyces cerevisiae_|[Yeast 7.6](https://sourceforge.net/projects/yeast/)|3989|2693|1147|
 
 This repository is administered by Benjamín J. Sánchez ([@BenjaSanchez](https://github.com/benjasanchez)), Division of Systems and Synthetic Biology, Department of Biology and Biological Engineering, Chalmers University of Technology.
 
@@ -27,9 +27,7 @@ This repository is administered by Benjamín J. Sánchez ([@BenjaSanchez](https:
 * Matlab user:
   * A functional Matlab installation (MATLAB 7.3 or higher).
   * The [COBRA toolbox for MATLAB](https://github.com/opencobra/cobratoolbox).
-* Python user:
-  * Python 2.7, 3.4, 3.5 or 3.6
-  * [cobrapy](https://github.com/opencobra/cobrapy)
+* Python user: Python 3.4, 3.5, 3.6 or 3.7
 
 ### Required Software - Contributor:
 
@@ -42,18 +40,28 @@ This repository is administered by Benjamín J. Sánchez ([@BenjaSanchez](https:
 * [Gurobi Optimizer](http://www.gurobi.com/registration/download-reg) for any simulations.
 
 ### Installation Instructions
-* For users: Clone it from [`master`](https://github.com/SysBioChalmers/yeast-GEM) in the Github repo, or just download [the latest release](https://github.com/SysBioChalmers/yeast-GEM/releases).
+* For users: Clone it from [`master`](https://github.com/SysBioChalmers/yeast-GEM) in the Github repo, or just download [the latest release](https://github.com/SysBioChalmers/yeast-GEM/releases). If you work in python, please create an environment with all requirements:
+  ```bash
+  pip install -r requirements.txt     # installs all dependencies
+  type nul > .env                     # creates a .env file for locating the root
+  ```
 * For contributors: Fork it to your Github account, and create a new branch from [`devel`](https://github.com/SysBioChalmers/yeast-GEM/tree/devel).
 
 ## Usage
 
 Make sure to load/save the model with the corresponding wrapper functions!
 * In Matlab:
-  * Loading: `complementaryScripts/loadYeastModel.m`
-  * Saving: `complementaryScripts/saveYeastModel.m`
+  ```matlab
+  cd ./ComplementaryScripts
+  model = loadYeastModel(); % loading
+  saveYeastModel(model);    % saving
+  ```
 * In Python:
-  * Loading: `complementaryScripts/loadYeastModel.py`
-  * Saving: currently unavailable
+  ```python
+  import ComplementaryScripts.io as io
+  model = io.read_yeast_model() # loading
+  io.write_yeast_model(model)   # saving
+  ```
 
 ## Model Files
 
