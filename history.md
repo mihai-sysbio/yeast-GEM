@@ -1,5 +1,21 @@
 # History
 
+### yeast 8.4.0:
+* Features:
+  * New functions `mapKEGGID.m ` and `mapMNXMID.m` for adding ids in model. Used them to add missing KEGG and MetaNetX ids for both metabolites and reactions (PR #220).
+  * Solves #197: Added missing MetaNetX ids using KEGG ids and ChEBI ids (PR #220).
+  * Added BiGG ids for all matched metabolites/reactions using MetaNetX + manual curation, together with lists containing new BiGG ids for the unmatched ones (PR #188).
+  * New functions `read_yeast_model` and `write_yeast_model` for easier usage in python (PR #224).
+  * Solves #172: Model can now be loaded with BiGG ids as main ids, for better compliance with cobrapy (PR #224).
+* Fixes:
+  * Solves #102: Every component of the model is now preserved when the model is opened with cobrapy, including gene names (PR #216).
+  * Manual curation of MetaNetX, KEGG and ChEBI ids for metabolites/reactions (PRs #188 and #220).
+  * Solves #187: Removed some duplicate reactions in the model (PR #188).
+  * Mass/charge balanced most unbalanced reactions in model using `checkSmatrixMNX.m`, bringing the number down to 17 reactions (PR #222).
+* Others:
+  * Configured repo to ensure that files always use `LF` as EOL character (PR #221).
+  * Gene SBO terms are now recorded, after update in COBRA toolbox (PR #188).
+
 ### yeast 8.3.5:
 * Fixes:
   * Closes #129: Removed non-S288C genes (PR #211).
