@@ -43,7 +43,6 @@ Thumbs.db
 *.mex*
 *.mlappinstall
 *.mltbx
-*.mat
 helpsearch*/
 
 # Python-related things #
@@ -55,5 +54,4 @@ helpsearch*/
 # Non-complying tables #
 ########################
 *.xls
-*.xlsx
 *.tab
