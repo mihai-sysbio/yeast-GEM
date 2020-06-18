@@ -4,8 +4,6 @@
 % only non repeated elements, and also the list of the positions deleted.
 %
 % NOTE: Must be a string or cell array
-%
-% Benjamín J. Sánchez
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function [list,deleted] = deleteRepeated(list)

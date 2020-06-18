@@ -6,8 +6,6 @@
 % Reactions without gene but need for modelling: 1
 % Reactions without gene: 0
 % Exchange reactions: NaN
-%
-% Hongzhong Lu & Benjamín J. Sánchez
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function model = addConfidenceScores(model)

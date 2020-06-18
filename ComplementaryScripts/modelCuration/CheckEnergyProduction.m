@@ -2,8 +2,6 @@
 % ATP and NADH production
 % the input is model and new reaction ID lists
 % output is a result with pass or error
-%
-% Feiran Li
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function [energyResults,redoxResults] = CheckEnergyProduction(model,rxn,energyResults,redoxResults)

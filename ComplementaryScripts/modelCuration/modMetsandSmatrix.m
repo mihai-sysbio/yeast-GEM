@@ -7,7 +7,6 @@
 % Inputs: model and modMetsandSmatrix.tsv
 % Note: functions checkMassChargeBalance.m and changerxn.m are required
 %
-% Cheng Wei Quan (Eiden), 2020-05-20
 
 %Load model
 cd ..
