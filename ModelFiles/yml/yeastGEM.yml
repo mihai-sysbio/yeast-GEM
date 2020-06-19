@@ -97868,6 +97868,7 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - bigg.reaction: PItg
       - metanetx.reaction: MNXR102871
       - sbo: SBO:0000655
     - confidence_score: 0
@@ -98000,6 +98001,7 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - bigg.reaction: AMETtn
       - metanetx.reaction: MNXR95809
       - sbo: SBO:0000655
     - confidence_score: 0
@@ -98051,6 +98053,7 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - bigg.reaction: ACSERtmi
       - metanetx.reaction: MNXR95416
       - sbo: SBO:0000655
     - confidence_score: 0
