@@ -6,8 +6,6 @@
 % model     model structure to save (note: must be in COBRA format)
 % upDATE    logical =true if updating the date in the README file is needed
 %           (opt, default true)
-%
-% Benjamin J. Sanchez
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function saveYeastModel(model,upDATE)

@@ -3,8 +3,6 @@
 % Adds rxns and metabolites based on Gpfilling results, here we adde
 % transport reactions for deadend metabolites but have same metabolites in different compartment.
 % Input: model, GapfillingnewRxnMatrix.tsv, GapfillingnewRxnProp.tsv.
-%
-% Feiran Li     2018-10-12
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Load model:

@@ -9,7 +9,6 @@
 %
 % Inputs: model
 %
-% Cheng Wei Quan (Eiden), 2020-05-08
 
 %load model
 cd ..

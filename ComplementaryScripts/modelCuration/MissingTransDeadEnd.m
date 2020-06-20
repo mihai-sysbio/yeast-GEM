@@ -6,8 +6,6 @@ function [model,canbesolved,DEM,DEM_reason] = MissingTransDeadEnd(model)
 %         DEM_reason is a combined list with possible reasons for all
 %         deadend mets.
 %         output format for canbesolved: deadentMetsName MNXID deadendMetsInanotherComps Possible solution
-% Feiran Li 2019-02-01
-% Feiran Li 2019-07-22 update some field name in case of casuing confusion
 
 model_org = model;
 changeCobraSolver('gurobi', 'LP');

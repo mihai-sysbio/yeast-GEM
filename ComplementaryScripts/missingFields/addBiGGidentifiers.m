@@ -3,9 +3,6 @@ function addBiGGidentifiers
 %   Loads the model, adds all BiGG identifiers for both metabolites and
 %   reactions, and saves the model back.
 %
-%   Sebastian N. Mendoza, 2019-03-15
-%   Benjamin J. Sanchez, 2020-05-05
-%
 
 % Load model:
 cd ..

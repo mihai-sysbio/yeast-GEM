@@ -15,8 +15,6 @@
 %           if the metabolite is being consumed, produced or transported 
 %           in each rxn. If no flux was given as input, a zero will appear
 %           instead.
-%
-% Benjamín J. Sánchez
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function checkMetBalance(model,metName,flux,show_all)
