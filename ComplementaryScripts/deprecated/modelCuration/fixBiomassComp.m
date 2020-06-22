@@ -10,8 +10,6 @@
 %    growth rates (Van Hoek et al. 1988)
 %
 % Function adapted from SLIMEr: https://github.com/SysBioChalmers/SLIMEr
-%
-% Benjamin Sanchez. Last update: 2018-09-07
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function fixBiomassComp

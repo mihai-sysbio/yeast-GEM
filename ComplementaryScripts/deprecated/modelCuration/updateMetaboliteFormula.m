@@ -2,9 +2,6 @@
 % model = updateMetaboliteFormula(model)
 %
 % Reads the data file and updates the metabolite formula information in the model
-%
-% William T. Scott, Jr.
-% Last Update: 2018-08-23
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Load model

@@ -6,7 +6,6 @@
 %
 % Inputs: model and modify.tsv
 %
-% Cheng Wei Quan (Eiden), 2020-05-05
 
 %Load model
 cd ..

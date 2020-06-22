@@ -6,8 +6,6 @@
 % it can be used as a "solo" substrate.
 %
 % NOTE: requires COBRA
-% 
-% Feiran Li     2018-08-25
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Load model:

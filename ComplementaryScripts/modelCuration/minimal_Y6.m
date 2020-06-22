@@ -8,8 +8,6 @@ function model = minimal_Y6(model)
 % start with a clean slate: set all exchange reactions to upper bound = 1000
 % and lower bound = 0 (ie, unconstrained excretion, no uptake)
 
-%Feiran Li 2018.09.05
-
 exchangeRxns = findExcRxns(model);
 model.lb(exchangeRxns) = 0;
 model.ub(exchangeRxns) = 1000;

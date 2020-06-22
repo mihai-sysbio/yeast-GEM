@@ -5,8 +5,6 @@
 % As for the reference of new GPR, please find detailed information in:
 % ComplementaryData/databases/DBnewGeneAnnotation.tsv
 % NOTE: changeGeneAssociation.m is a function from cobra
-%
-% Feiran Li & Hongzhong Lu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Load model

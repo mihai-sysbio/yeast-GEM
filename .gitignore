@@ -41,7 +41,7 @@ Thumbs.db
 *.asv
 *.m~
 *.mex*
-*.mlappinstall 
+*.mlappinstall
 *.mltbx
 *.mat
 helpsearch*/
@@ -49,6 +49,8 @@ helpsearch*/
 # Python-related things #
 #########################
 *.ipynb_checkpoints/
+*.pyc
+*.env
 
 # Non-complying tables #
 ########################

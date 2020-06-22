@@ -6,8 +6,6 @@ function model = addBiomassUpdate(model,data)
 %        Biomass_newRxnMet.tsv.
 %
 % NOTE: changeGeneAssociation.m is a function from COBRA
-%
-% Feiran Li     2018-10-23
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
