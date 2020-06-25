@@ -205,7 +205,7 @@ When releasing, please follow these steps:
   8. Pull from `master` to `gh-pages` to update the landing page.
   9. Review the [Zenodo](https://zenodo.org) release: Every new release from Github (step 7) automatically triggers a new release in Zenodo. However, so far it is not possible to fully customize this release, and some manual curation is needed. This includes:
       * Ensuring the title of the release has the format `SysBioChalmers/yeast-GEM: yeast X.Y.Z`.
-      * Correcting author names.
+      * Correcting author names to include all commit authors and PR reviewers that contributed to the release.
       * Ensuring the version of the release has the format `vX.Y.Z`.
       * Setting the language to English.
       * Adding any Grant IDs (if applicable).
