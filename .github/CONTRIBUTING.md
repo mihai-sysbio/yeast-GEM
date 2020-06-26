@@ -196,19 +196,19 @@ yeast-GEM follows [semantic versioning](https://semver.org/), adapted to GEMs:
 
 When releasing, please follow these steps:
   1. Make sure all dependencies in `devel` correspond to the setup from the local computer from which the release will be made. If not, make a single commit in `devel` updating this with a `loadYeastModel`/`saveYeastModel` cycle.
-  2. Create a pull request from `devel` to `master`, indicating all new features/fixes/etc. and referencing every previous pull request included (examples [here](https://github.com/SysBioChalmers/yeast-GEM/releases)). Tip: if any [issue](https://github.com/SysBioChalmers/yeast-GEM/issues) gets solved in the release, write in the pull request description "Fixes #X", where "X" is the issue number. That way the issue will be automatically closed after merge.
+  2. Create a pull request from `devel` to `master`, indicating all new features/fixes/etc. and referencing every previous pull request included (examples [here](https://github.com/SysBioChalmers/yeast-GEM/releases)). Tip: if any [issue](https://github.com/SysBioChalmers/yeast-GEM/issues) gets solved in the release, write in the pull request description "Closes #X", where "X" is the issue number. That way the issue will be automatically closed after merge.
   3. Merge at least a day after (having at least one accepted review).
-  4. Switch locally to `master` and update `history.md`, by putting at the top the same description of the corresponding PR from step 2.
+  4. Switch locally to `master`, pull changes and update `history.md`, by putting at the top the same description of the corresponding PR from step 2.
   5. Bump version with `increaseVersion.m`. **NOTE:** The function will error if unexpected changes are occurring. If this happens, probably step 1 was done incorrectly. To fix it, commit in `devel` any necessary changes and make a new pull request.
-  6. Commit changes from steps 4 and 5 with the message `chore: version X.Y.Z`.
+  6. Commit changes from steps 4 and 5 with the message `chore: version X.Y.Z`, and push to the remote.
   7. Make the new release at GitHub [here](https://github.com/SysBioChalmers/yeast-GEM/releases/new), using the proper tag "vX.Y.Z" and with the same description as the corresponding PR from step 2.
-  8. Pull from `master` to `gh-pages` to update the landing page.
+  8. Merge locally `master` into `gh-pages` and push to update the landing page.
   9. Review the [Zenodo](https://zenodo.org) release: Every new release from Github (step 7) automatically triggers a new release in Zenodo. However, so far it is not possible to fully customize this release, and some manual curation is needed. This includes:
       * Ensuring the title of the release has the format `SysBioChalmers/yeast-GEM: yeast X.Y.Z`.
-      * Correcting author names.
+      * Correcting author names to include all commit authors and PR reviewers that contributed to the release.
       * Ensuring the version of the release has the format `vX.Y.Z`.
       * Setting the language to English.
-      * Adding any Grant IDs (if applicable).
+      * Adding any grant IDs (if applicable).
 
      Make sure to both save & publish your edits. You will find the new release at the top of [all Zenodo releases](https://zenodo.org/search?page=1&size=20&q=conceptrecid:%221494182%22&sort=-publication_date&all_versions=True). Note that it might take some minutes for the Zenodo release to appear after you create the release in Github.
 
