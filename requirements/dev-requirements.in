@@ -1,0 +1,7 @@
+# Requirements for developers:
+cobra
+memote
+notebook
+pip-tools
+python-dotenv
+symengine
