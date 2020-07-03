@@ -43,7 +43,7 @@ This repository is administered by Benjamín J. Sánchez ([@BenjaSanchez](https:
 * For users: Clone it from [`master`](https://github.com/SysBioChalmers/yeast-GEM) in the Github repo, or just download [the latest release](https://github.com/SysBioChalmers/yeast-GEM/releases). If you work in python, please create an environment with all requirements:
   ```bash
   pip install -r requirements/requirements.txt  # installs all dependencies
-  type nul > .env                               # creates a .env file for locating the root
+  touch .env                                    # creates a .env file for locating the root
   ```
 * For contributors: Fork it to your Github account, and create a new branch from [`devel`](https://github.com/SysBioChalmers/yeast-GEM/tree/devel).
 
