@@ -163,6 +163,7 @@ Every pull request must be approved by at least one reviewer before it can be me
 This section is meant for the administrator of this repo. The main duties of the administrator are:
 * To make sure conventions and standards in the model are kept.
 * To keep the repository clean and organized, i.e. avoid redundancy in functions and/or data, and keep coherency in naming of files.
+* To manage package dependencies and regularly update them.
 * To help in the reviewing process of external pull requests by assigning reviewers, [labels](https://github.com/SysBioChalmers/yeast-GEM/issues/labels) and [projects](https://github.com/SysBioChalmers/yeast-GEM/projects), if applicable.
 * To keep [issues](https://github.com/SysBioChalmers/yeast-GEM/issues) with the proper labels, and to close them once they are fixed in the `master` branch.
 * In cases of disagreement between contributors, to decide how to resolve the issue.
@@ -174,6 +175,21 @@ The following points should be considered when merging branches to `devel`:
 * Make sure the branch gets accepted by at least one developer with writing access.
 * Wait at least a day before merging, to allow other developers to inspect the pull request.
 * As soon as the branch is merged, check if `devel` is still possible to merge to `master` (this can be checked [here](https://github.com/SysBioChalmers/yeast-GEM/compare/devel)). If conflicts appear (which should rarely happen and only if the `.xml` file was changed in an unexpected way by a toolbox update), fix the conflict _locally_ as soon as possible in `devel` and then push it (note, **DO NOT** pull any other changes from `master` to `devel`, just the single file that is creating the conflict).
+
+### Managing python dependencies
+
+We use [pip-tools](https://github.com/jazzband/pip-tools) for managing dependencies:
+
+* If a new dependency is needed for users/developers:
+  1. Add the dependency to `/requirements/requirements.in` or `/requirements/dev-requirements.in`, respectively (note that by default any requirement in `requirements.in` will also be in `dev-requirements.in`).
+  2. From `/requirements`, run `pip-compile requirements.in` and/or `pip-compile dev-requirements.in` as needed.
+
+* If dependencies need to be upgraded, from `/requirements` run:
+  ```
+  pip-compile --upgrade requirements.in
+  pip-compile --upgrade dev-requirements.in
+  ```
+  Dependencies should be upgraded regularly, but always first tested in separate branches.
 
 ### Releasing a new version
 
