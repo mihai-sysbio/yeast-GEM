@@ -25778,7 +25778,7 @@
       - sbo: SBO:0000247
   - !!omap
     - id: s_3884
-    - name: Protein
+    - name: generic protein
     - compartment: c
     - formula: C2H4NOR
     - charge: 1
