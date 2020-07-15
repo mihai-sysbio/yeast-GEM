@@ -34400,11 +34400,11 @@
     - metabolites: !!omap
       - s_0122: -1
       - s_0297: 1
-      - s_0794: -2
+      - s_0794: -5
       - s_0803: 4
-      - s_1207: 3
-      - s_1212: -3
       - s_1275: -3
+      - s_3824: 6
+      - s_3825: -6
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: YGR060W
