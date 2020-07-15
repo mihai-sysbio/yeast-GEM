@@ -43451,10 +43451,13 @@
     - id: r_0774
     - name: NAPRtase
     - metabolites: !!omap
+      - s_0394: 1
+      - s_0434: -1
       - s_0633: 1
       - s_0794: -1
       - s_1219: -1
       - s_1222: 1
+      - s_1322: 1
       - s_1386: -1
     - lower_bound: 0
     - upper_bound: 1000
@@ -43471,10 +43474,13 @@
     - id: r_0775
     - name: NAPRtase
     - metabolites: !!omap
+      - s_0397: 1
+      - s_0437: -1
       - s_0636: 1
       - s_0799: -1
       - s_1221: -1
       - s_1223: 1
+      - s_1326: 1
       - s_1387: -1
     - lower_bound: 0
     - upper_bound: 1000
