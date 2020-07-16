@@ -25778,7 +25778,7 @@
       - sbo: SBO:0000247
   - !!omap
     - id: s_3884
-    - name: Protein
+    - name: generic protein
     - compartment: c
     - formula: C2H4NOR
     - charge: 1
@@ -34400,11 +34400,11 @@
     - metabolites: !!omap
       - s_0122: -1
       - s_0297: 1
-      - s_0794: -2
+      - s_0794: -5
       - s_0803: 4
-      - s_1207: 3
-      - s_1212: -3
       - s_1275: -3
+      - s_3824: 6
+      - s_3825: -6
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: YGR060W
@@ -43451,10 +43451,13 @@
     - id: r_0774
     - name: NAPRtase
     - metabolites: !!omap
+      - s_0394: 1
+      - s_0434: -1
       - s_0633: 1
       - s_0794: -1
       - s_1219: -1
       - s_1222: 1
+      - s_1322: 1
       - s_1386: -1
     - lower_bound: 0
     - upper_bound: 1000
@@ -43471,10 +43474,13 @@
     - id: r_0775
     - name: NAPRtase
     - metabolites: !!omap
+      - s_0397: 1
+      - s_0437: -1
       - s_0636: 1
       - s_0799: -1
       - s_1221: -1
       - s_1223: 1
+      - s_1326: 1
       - s_1387: -1
     - lower_bound: 0
     - upper_bound: 1000
@@ -89859,13 +89865,7 @@
       - s_3716: 1
     - lower_bound: 0
     - upper_bound: 1000
-    - gene_reaction_rule: YIL020C
-    - subsystem:
-        - sce00340  Histidine metabolism
-        - sce01110  Biosynthesis of secondary metabolites
-        - sce01230  Biosynthesis of amino acids
     - annotation: !!omap
-      - ec-code: 5.3.1.16
       - kegg.reaction: R02410
       - metanetx.reaction: MNXR103420
       - pmid: 4967422
