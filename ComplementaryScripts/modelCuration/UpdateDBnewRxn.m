@@ -7,8 +7,6 @@
 %       Before run the codes below, the file should be manually editted.
 %       COBRA required.
 %       New reaction should be in .tsv format.
-%
-% Feiran Li & Hongzhong Lu
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Load model

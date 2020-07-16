@@ -4,8 +4,6 @@
 % when simulating N-limited condition, protein content was rescaled, and
 % when simulate anaerobic condtion, heme NADH NADP NADPH NAD were rescaled
 % to be 0.
-% Feiran Li -2018-08-25
-% Feiran Li -Last update: 2019-09-24
 
 initCobraToolbox
 cd ..

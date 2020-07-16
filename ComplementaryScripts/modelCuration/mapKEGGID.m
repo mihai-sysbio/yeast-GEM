@@ -8,7 +8,6 @@
 % reactions.tsv and compounds.tsv from modelSEED database is downloaded directly from GitHub repository ModelSEEDDatabase
 % link: github.com/ModelSEED/ModelSEEDDatabase
 %
-% Cheng Wei Quan (Eiden), 2020-05-07
 
 %load model
 cd ..

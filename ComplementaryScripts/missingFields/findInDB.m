@@ -1,8 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % [uni,EC] = findInDB(rxn_pos,model,DB)
 % Matches the uniprot and EC number for a given rxn into a given database.
-%
-% Benjamín J. Sánchez
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function [uni,EC] = findInDB(rxn_pos,model,DB)

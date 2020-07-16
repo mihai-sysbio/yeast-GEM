@@ -24,9 +24,7 @@
 %
 % Usage: MassChargeresults = checkRxnBalance(model,rxn)
 %
-% modified from Feiran Li's script 'checkBalanceforSce.m'
-%
-% Cheng Wei Quan (Eiden), 2020-05-06
+% modified from 'checkBalanceforSce.m'
 
 function MassChargeresults = checkRxnBalance(model,rxn)
 exchangeRxns = findExcRxns(model);

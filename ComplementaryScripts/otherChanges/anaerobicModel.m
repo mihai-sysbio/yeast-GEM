@@ -1,10 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % anaerobicModel.m
 % Converts model to anaerobic
-%
-% Benjamin J. Sanchez
-% Feiran Li - 2019-09-24
-% Feiran Li - Last update: 2019-10-02 modify the order of changes
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function model = anaerobicModel(model)

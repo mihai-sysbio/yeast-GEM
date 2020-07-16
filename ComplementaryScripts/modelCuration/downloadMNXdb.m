@@ -10,7 +10,6 @@ function downloadMNXdb(files,mnxPath)
 %
 % Usage: downloadMNXdb(files,mnxPath)
 %
-% Eduard Kerkhoven, 2020-05-04
 
 if nargin<2
     [ST, I]=dbstack('-completenames');

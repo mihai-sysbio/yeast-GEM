@@ -18,8 +18,6 @@ function targetList=mapIDsViaMNXref(type,queryList,fromDB,toDB)
 %
 %   Usage: targetList=mapIDsViaMNXref(type,queryList,fromDB,toDB)
 %
-%   Hao Wang, 2018-05-23
-%
 
 targetList={};
 
