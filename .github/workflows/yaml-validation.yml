@@ -37,5 +37,5 @@ jobs:
     - name: Import with cobrapy
       continue-on-error: true
       run: |
-        pip install cobra
+        pip install -r requirements/ci-requirements.txt
         python -c "import cobra ; cobra.io.load_yaml_model('ModelFiles/yml/yeastGEM.yml')"
