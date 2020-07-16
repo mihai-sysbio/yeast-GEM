@@ -1,0 +1,56 @@
+name: Memote history
+
+on: [push, pull_request]
+
+jobs:
+  memote-history:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Set up Python 3
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install memote
+      run: pip install -r requirements/ci-requirements.txt
+        
+    - name: Memote on PR
+      if: ${{ github.event_name == 'pull_request' }}
+      run: |
+        echo "Untracked build, skip saving to gh-pages"
+        memote run --ignore-git
+
+    - name: Setup variables
+      id: setup
+      run: |
+        echo "::set-output name=history::history_report.html"
+        echo "::set-output name=deployment::$(awk -F '=' '{if (! ($0 ~ /^;/) && $0 ~ /deployment/) print $2}' memote.ini | tr -d ' ')"
+        echo "::set-output name=location::$(awk -F '=' '{if (! ($0 ~ /^;/) && $0 ~ /location/) print $2}' memote.ini | tr -d ' ')"
+
+    - name: Memote on push
+      if: ${{ github.event_name != 'pull_request' }}
+      run: |
+        # Always need the deployment branch available locally for storing results.
+        git checkout refs/heads/${{ steps.setup.outputs.deployment }}
+        git checkout ${{ github.ref }}
+        memote run --skip-unchanged
+
+        # Generate the history report on the deployment branch.
+        echo "Generating updated history report ${{ steps.setup.outputs.history }}"
+        memote report history --filename="/tmp/${{ steps.setup.outputs.history }}"
+        git checkout refs/heads/${{ steps.setup.outputs.deployment }}
+        mv "/tmp/${{ steps.setup.outputs.history }}" ./
+
+    - name: Auto-commit results
+      uses: stefanzweifel/git-auto-commit-action@v4.4.0
+      with:
+        commit_user_name: memote-bot
+        commit_message: update memote history report
+        file_pattern: ${{ steps.setup.outputs.history }}
+        branch: ${{ steps.setup.outputs.deployment }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
