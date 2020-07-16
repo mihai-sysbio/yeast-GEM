@@ -4,8 +4,6 @@
 % iSce926 source: http://www.maranasgroup.com/submission_models/iSce926.htm
 %
 % NOTE: changeGeneAssociation.m is a function from cobra
-% 
-% Hongzhong Lu & Benjamín Sánchez
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Load model:

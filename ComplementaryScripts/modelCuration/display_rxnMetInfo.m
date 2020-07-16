@@ -15,7 +15,6 @@
 %
 % Usage: editFormula = display_rxnMetInfo(model,rxn_num)
 %
-% Cheng Wei Quan (Eiden), 2020-05-06
 
 function editFormula = display_rxnMetInfo(model,rxn_num)
 %Check for reac_prop.tsv in current directory

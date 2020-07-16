@@ -25778,7 +25778,7 @@
       - sbo: SBO:0000247
   - !!omap
     - id: s_3884
-    - name: Protein
+    - name: generic protein
     - compartment: c
     - formula: C2H4NOR
     - charge: 1
@@ -34400,11 +34400,11 @@
     - metabolites: !!omap
       - s_0122: -1
       - s_0297: 1
-      - s_0794: -2
+      - s_0794: -5
       - s_0803: 4
-      - s_1207: 3
-      - s_1212: -3
       - s_1275: -3
+      - s_3824: 6
+      - s_3825: -6
     - lower_bound: 0
     - upper_bound: 1000
     - gene_reaction_rule: YGR060W
@@ -43451,10 +43451,13 @@
     - id: r_0774
     - name: NAPRtase
     - metabolites: !!omap
+      - s_0394: 1
+      - s_0434: -1
       - s_0633: 1
       - s_0794: -1
       - s_1219: -1
       - s_1222: 1
+      - s_1322: 1
       - s_1386: -1
     - lower_bound: 0
     - upper_bound: 1000
@@ -43471,10 +43474,13 @@
     - id: r_0775
     - name: NAPRtase
     - metabolites: !!omap
+      - s_0397: 1
+      - s_0437: -1
       - s_0636: 1
       - s_0799: -1
       - s_1221: -1
       - s_1223: 1
+      - s_1326: 1
       - s_1387: -1
     - lower_bound: 0
     - upper_bound: 1000
@@ -89859,13 +89865,7 @@
       - s_3716: 1
     - lower_bound: 0
     - upper_bound: 1000
-    - gene_reaction_rule: YIL020C
-    - subsystem:
-        - sce00340  Histidine metabolism
-        - sce01110  Biosynthesis of secondary metabolites
-        - sce01230  Biosynthesis of amino acids
     - annotation: !!omap
-      - ec-code: 5.3.1.16
       - kegg.reaction: R02410
       - metanetx.reaction: MNXR103420
       - pmid: 4967422
@@ -98044,6 +98044,7 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - metanetx.reaction: MNXR94845
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98055,6 +98056,7 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - metanetx.reaction: MNXR95431
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98066,6 +98068,8 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - bigg.reaction: ADPRIBt
+      - metanetx.reaction: MNXR95481
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98077,6 +98081,7 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - metanetx.reaction: MNXR99646
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98090,6 +98095,7 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - metanetx.reaction: MNXR101858
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98103,6 +98109,7 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - metanetx.reaction: MNXR135002
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98114,6 +98121,8 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - bigg.reaction: PItg
+      - metanetx.reaction: MNXR102871
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98130,6 +98139,8 @@
     - lower_bound: 0
     - upper_bound: 1000
     - annotation: !!omap
+      - bigg.reaction: r2499
+      - metanetx.reaction: MNXR106312
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98141,6 +98152,8 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - bigg.reaction: UDPtg
+      - metanetx.reaction: MNXR105076
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98152,6 +98165,8 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - bigg.reaction: UDPtg
+      - metanetx.reaction: MNXR105076
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98163,6 +98178,7 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - metanetx.reaction: MNXR105127
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98174,6 +98190,7 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - metanetx.reaction: MNXR104921
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98185,6 +98202,7 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - metanetx.reaction: MNXR99110
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98198,6 +98216,8 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - bigg.reaction: ACTNt2r
+      - metanetx.reaction: MNXR95426
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98209,6 +98229,8 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - bigg.reaction: GLNtm
+      - metanetx.reaction: MNXR100259
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98220,6 +98242,7 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - metanetx.reaction: MNXR105127
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98231,6 +98254,8 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - bigg.reaction: AMETtn
+      - metanetx.reaction: MNXR95809
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98242,6 +98267,7 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - metanetx.reaction: MNXR100449
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98256,6 +98282,7 @@
     - upper_bound: 1000
     - annotation: !!omap
       - ec-code: 2.7.4.6
+      - metanetx.reaction: MNXR96123
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98267,6 +98294,7 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - metanetx.reaction: MNXR101385
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98278,6 +98306,8 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - bigg.reaction: ACSERtmi
+      - metanetx.reaction: MNXR95416
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98289,6 +98319,7 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - metanetx.reaction: MNXR100494
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98302,6 +98333,7 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - metanetx.reaction: MNXR97002
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98316,6 +98348,7 @@
     - upper_bound: 1000
     - annotation: !!omap
       - ec-code: 2.7.4.6
+      - metanetx.reaction: MNXR96123
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98327,6 +98360,7 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - metanetx.reaction: MNXR104966
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98338,6 +98372,7 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - metanetx.reaction: MNXR104460
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98349,6 +98384,7 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - metanetx.reaction: MNXR105071
       - sbo: SBO:0000655
     - confidence_score: 0
   - !!omap
@@ -98360,6 +98396,7 @@
     - lower_bound: -1000
     - upper_bound: 1000
     - annotation: !!omap
+      - metanetx.reaction: MNXR105021
       - sbo: SBO:0000655
     - confidence_score: 0
 - genes:

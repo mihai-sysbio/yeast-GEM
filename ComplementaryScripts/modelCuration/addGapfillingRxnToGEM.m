@@ -3,8 +3,6 @@
 % Adds rxns and metabolites based on Gpfilling results, here we adde
 % transport reactions for deadend metabolites but have same metabolites in different compartment.
 % Input: model, GapfillingnewRxnMatrix.tsv, GapfillingnewRxnProp.tsv.
-%
-% Feiran Li     2018-10-12
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Load model:
@@ -23,15 +21,16 @@ fclose(fid);
 
 % Load rxn properties data:
 fid  = fopen('../ComplementaryData/modelCuration/GapfillingnewRxnProp.tsv','r');
-rev = textscan(fid,'%s %s %s %s %s %s %s %s','Delimiter','\t','HeaderLines',1);
+rev = textscan(fid,'%s %s %s %s %s %s %s %s %s','Delimiter','\t','HeaderLines',1);
 newrxn.ID  = rev{1};
 newrxn.Rev = cellfun(@str2num, rev{2});
 newrxn.GPR = rev{3};
 newrxn.rxnNames      = rev{4};
 newrxn.rxnECNumbers  = rev{5};
 newrxn.rxnKEGGID     = rev{6};
-newrxn.rxnNotes      = rev{7};
-newrxn.rxnMetaNetXID = rev{8};
+newrxn.rxnMetaNetXID = rev{7};
+newrxn.rxnBiGGID     = rev{8};
+newrxn.rxnNotes      = rev{9};
 for i = 1:length(newrxn.rxnMetaNetXID)
     if ~startsWith(newrxn.rxnMetaNetXID{i},'MNXR')
         newrxn.rxnMetaNetXID{i} = '';
@@ -115,6 +114,7 @@ for i = 1:length(newrxn.ID)
     model.rxnECNumbers(rxnIndex)  = newrxn.rxnECNumbers(i);
     model.rxnKEGGID(rxnIndex)     = newrxn.rxnKEGGID(i);
     model.rxnMetaNetXID(rxnIndex) = newrxn.rxnMetaNetXID(i);
+    model.rxnBiGGID(rxnIndex) = newrxn.rxnBiGGID(i);
     model.rxnConfidenceScores(rxnIndex) = 0;
     model.rxnNotes{rxnIndex} = ['NOTES: added after Gapfilling (PR #185); ',newrxn.rxnNotes{i}];
 end

@@ -8,8 +8,6 @@ function findDuplicatedRxns(model)
 %
 %   Usage: findDuplicatedRxns(model)
 %
-%   Benjamin J. Sanchez, 2020-04-27
-%
 
 model_r = ravenCobraWrapper(model);
 for i = 1:length(model.rxns)-1

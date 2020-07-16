@@ -2,8 +2,6 @@
 % the input is model and new reaction ID lists
 % output is a result with pass or error
 % NOTE: getElementalBalance.m is a function from raven
-%
-% Feiran Li
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function [MassChargeresults] = CheckBalanceforSce(model,rxn,MassChargeresults)

@@ -1,4 +1,4 @@
-MATLAB	9.7.0.1190202 (R2019b)
+MATLAB	9.7.0.1319299 (R2019b) Update 5
 libSBML	5.17.0
 RAVEN_toolbox	2.4.0
 COBRA_toolbox	commit 8204bb7

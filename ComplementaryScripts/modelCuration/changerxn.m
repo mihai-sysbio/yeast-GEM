@@ -16,8 +16,6 @@ function model = changerxn(model,rxnID,rxnformula,grRule)
 %
 %   Usage: model = changerxn(model,rxnID,rxnformula,grRule)
 %
-% Feiran Li, 2020-05-24
-% Cheng Wei Quan (Eiden), added documentation, 2020-05-24
 
 [~,idx] = ismember(rxnID,model.rxns); 
 if nargin < 4

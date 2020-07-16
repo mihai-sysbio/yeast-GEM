@@ -1,8 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % model = updateMetaboliteAnnotation(model)
 % update the metabolite annotation information in the model
-%
-% Hongzhong Lu & Benjamín J. Sánchez
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function model = updateMetaboliteAnnotation(model)

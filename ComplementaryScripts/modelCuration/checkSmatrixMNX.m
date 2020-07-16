@@ -18,7 +18,6 @@
 % in the manual curation process of reaction balance
 % The script was thus added into repository for documentation purposes
 %
-% Cheng Wei Quan (Eiden), 2020-05-20
 
 %Load model
 cd ..

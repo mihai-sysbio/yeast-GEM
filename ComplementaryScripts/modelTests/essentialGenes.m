@@ -11,9 +11,6 @@ function [accurancy,tp,tn,fn,fp] = essentialGenes
 %
 %   Usage: [accurancy,tp,tn,fn,fp] = essentialGenes
 %
-%   Feiran Li, 2019-09-25
-%   Benjamin J. Sanchez, 2020-01-01
-%
 
 initCobraToolbox
 cd ..
