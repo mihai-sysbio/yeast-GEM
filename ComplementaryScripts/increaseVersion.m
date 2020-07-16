@@ -12,8 +12,6 @@ function increaseVersion(bumpType)
 %
 %   Usage: increaseVersion(bumpType)
 %
-%   Benjamin Sanchez, 2018-09-25
-%
 
 %Check if in master:
 currentBranch = git('rev-parse --abbrev-ref HEAD');

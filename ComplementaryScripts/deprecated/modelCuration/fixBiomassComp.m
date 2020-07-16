@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% scaleBioMass
+% fixBiomassComp
 % Corrects the stoichiometry coefficients of all pseudo-rxns in an
 % iterative fashion:
 % 1. Switch back to original model's abundance values (Forster et al. 2003)
@@ -8,19 +8,17 @@
 % 3. Rescale carbohydrate fraction (total) to have biomass add up to 1
 % 4. GAM is fitted to simulate chemostat data of S. cerevisiae at low
 %    growth rates (Van Hoek et al. 1988)
-% 
-% Function adapted from SLIMEr: https://github.com/SysBioChalmers/SLIMEr
 %
-% Benjamin Sanchez. Last update: 2018-09-07
+% Function adapted from SLIMEr: https://github.com/SysBioChalmers/SLIMEr
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-function scaleBioMass
+function fixBiomassComp
 
 %Load model:
 initCobraToolbox
 cd ..
 model = loadYeastModel;
-cd modelCuration
+cd otherChanges
 
 %Load data from Forster 2003:
 fid = fopen('../../ComplementaryData/physiology/biomassComposition_Forster2003.tsv');
@@ -32,7 +30,7 @@ data.groups     = Forster2003{5};
 fclose(fid);
 
 %Compute current composition:
-sumBioMass(model,data);
+sumBioMass(model);
 
 %Switch to Forster 2003 data:
 for i = 1:length(data.mets)
@@ -54,7 +52,7 @@ for i = 1:length(data.mets)
 end
 
 %Compute current composition:
-sumBioMass(model,data);
+sumBioMass(model);
 
 %Correct with data from biomassComposition_Cofactor_Ion:
 data_original = data;
@@ -66,7 +64,9 @@ data.MWs        = double(Cofactors{4});
 data.groups     = Cofactors{5};
 fclose(fid);
 
+cd ../modelCuration
 model = addBiomassUpdate(model,data);
+cd ../otherChanges
 
 for j = 1:length(data_original.mets)
     if ~ismember(data_original.mets(j),data.mets)
@@ -76,7 +76,7 @@ for j = 1:length(data_original.mets)
         data.groups = [data.groups; data_original.groups(j)];
     end
 end
-[X,P,C,R,~,~,~,~] = sumBioMass(model,data);
+[X,P,C,R,~,~,~,~] = sumBioMass(model);
 
 %Correct with data from Lahtvee 2017:
 fid = fopen('../../ComplementaryData/physiology/biomassComposition_Lahtvee2017.tsv');
@@ -92,11 +92,11 @@ for i = 1:length(data2.mets)
     if strcmp(metName,'protein')      %protein fraction
         fP    = abundance/P;        %ratio to scale
         model = rescalePseudoReaction(model,'protein',fP);
-        
+
     elseif strcmp(metName,'RNA')      %RNA fraction
         fR    = abundance/R;        %ratio to scale
         model = rescalePseudoReaction(model,'RNA',fR);
-        
+
     else    %Some extra carbohydrates:
         modelPos = strcmp(model.mets,metID);
         compPos  = strcmp(data.mets,metID);
@@ -107,17 +107,17 @@ for i = 1:length(data2.mets)
         end
     end
 end
-[X,P,C,R,~,~,~,~] = sumBioMass(model,data);
+[X,P,C,R,~,~,~,~] = sumBioMass(model);
 
 %Balance out mass with carbohydrate content:
 delta = X - 1;           %difference to balance
 fC    = (C - delta)/C;
 model = rescalePseudoReaction(model,'carbohydrate',fC);
-sumBioMass(model,data);
+sumBioMass(model);
 
 %Fit GAM:
 model = fitGAM(model);
-sumBioMass(model,data);
+sumBioMass(model);
 
 %Finally, save model:
 cd ..
@@ -125,21 +125,3 @@ saveYeastModel(model)
 cd modelCuration
 
 end
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-function model = rescalePseudoReaction(model,metName,f)
-
-rxnName = [metName ' pseudoreaction'];
-rxnPos  = strcmp(model.rxnNames,rxnName);
-for i = 1:length(model.mets)
-    S_ir   = model.S(i,rxnPos);
-    isProd = strcmp(model.metNames{i},[metName ' [cytoplasm]']);
-    if S_ir ~= 0 && ~isProd
-        model.S(i,rxnPos) = f*S_ir;
-    end
-end
-
-end
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

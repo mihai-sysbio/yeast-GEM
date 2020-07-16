@@ -6,8 +6,6 @@ function model = addBiomassUpdate(model,data)
 %        Biomass_newRxnMet.tsv.
 %
 % NOTE: changeGeneAssociation.m is a function from COBRA
-%
-% Feiran Li     2018-10-23
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -142,6 +140,8 @@ for i = 1:length(newrxn.ID)
     model.rxnNotes{rxnIndex} = 'NOTES:added for BiomassUpdate (PR #174)';
     if ~isempty(model.rules{rxnIndex})
         model.rxnConfidenceScores(rxnIndex) = 2;   %reactions has GPR rules
+    elseif contains(model.rxnNames(rxnIndex),'exchange')
+        model.rxnConfidenceScores(rxnIndex) = NaN; %exchange rxns
     else
         model.rxnConfidenceScores(rxnIndex) = 1;   %reactions without gene but needed for modelling
     end
@@ -213,6 +213,7 @@ for i = 1:length(group)
         rxnIndex = strcmp(model.rxns,rxnID);
     end
     model.rxnNotes{rxnIndex} = 'NOTES:added for BiomassUpdate (PR #174)';
+    model.rxnConfidenceScores(rxnIndex) = 1; %needed for modeling
     model = rmfield(model,'grRules');
 end
 

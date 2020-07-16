@@ -13,8 +13,6 @@ function model = GetMNXID(model,type,level)
 %
 %   Usage: model = GetMNXID(model,type,level)
 %
-%   Feiran Li, 2018-09-18
-%
 
 if nargin<3
     level = 1;

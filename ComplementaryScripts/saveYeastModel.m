@@ -6,8 +6,6 @@
 % model     model structure to save (note: must be in COBRA format)
 % upDATE    logical =true if updating the date in the README file is needed
 %           (opt, default true)
-%
-% Benjamin J. Sanchez
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function saveYeastModel(model,upDATE)
@@ -35,6 +33,9 @@ end
 cd missingFields
 model = addSBOterms(model);
 cd ..
+
+%Save "proteins" ("fbc:name" in the xml file) = "geneNames" ("fbc:label" in the xml file):
+model.proteins = model.geneNames;
 
 %Check if model is a valid SBML structure:
 writeCbModel(model,'sbml','tempModel.xml');

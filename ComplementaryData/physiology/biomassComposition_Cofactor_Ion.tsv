@@ -1,3 +1,4 @@
+model_id	name	abundance_mmol/gDW	MW_g/mol	group	reference
 s_3880[c]	Ca(2+) 	2.17E-04	40.08	ion	DOI: 10.22161/ijeab/2.2.2
 s_3778[c]	chloride 	1.29E-03	35.45	ion	DOI: 10.3103/S106836741702015X
 s_4019[c]	Cu2(+) 	6.59E-04	63.55	ion	DOI: 10.22161/ijeab/2.2.2

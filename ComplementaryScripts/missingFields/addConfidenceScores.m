@@ -6,8 +6,6 @@
 % Reactions without gene but need for modelling: 1
 % Reactions without gene: 0
 % Exchange reactions: NaN
-%
-% Hongzhong Lu & Benjamín J. Sánchez
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function model = addConfidenceScores(model)
@@ -23,9 +21,10 @@ for i = 1:length(model.rxns)
         end
     else
         rxnName = model.rxnNames{i};
+        rxnNotes = model.rxnNotes{i};
         if contains(rxnName,'exchange')
             rxnConfidenceScores(i) = NaN;
-        elseif contains(rxnName,'SLIME rxn') || contains(rxnName,'pseudoreaction')
+        elseif contains(rxnName,'SLIME rxn') || contains(rxnName,'pseudoreaction')  || contains(rxnNotes,'Biolog update') || contains(rxnNotes,'BiomassUpdate')
             rxnConfidenceScores(i) = 1;
         else
             metNames = model.metNames(model.S(:,i) ~= 0);

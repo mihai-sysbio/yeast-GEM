@@ -1,30 +1,43 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% [X,P,C,R,D,L,I,F] = sumBioMass(model,data)
-% Calculates breakdown of biomass
-%
-% model     metabolic model in COBRA format
-% data      structure with at least the following 2 fields:
-%   mets    Cell array with metabolite ids
-%   MWs     Numeric array with molecular weights for each metabolite
-%
-% X         Total biomass fraction [gDW/gDW]
-% P         Protein fraction [g/gDW]
-% C         Carbohydrate fraction [g/gDW]
-% R         RNA fraction [g/gDW]
-% D         DNA fraction [g/gDW]
-% L         Lipid fraction [g/gDW]
-% F         cofactor [g/gDW]
-% I         ion [g/gDW]
-% 
-%
-% Function adapted from SLIMEr: https://github.com/SysBioChalmers/SLIMEr
-%
-% Benjamin Sanchez. Update: 2018-09-04
-% Feiran Li. Last update: 2018-09-24 -Update the sumBiomass to include ions
-% and cofactors
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function [X,P,C,R,D,L,I,F] = sumBioMass(model)
+  % sumBioMass
+  %   Calculates breakdown of biomass
+  %
+  %   model    (struct) Metabolic model in COBRA format
+  %
+  %   X         (float) Total biomass fraction [gDW/gDW]
+  %   P         (float) Protein fraction [g/gDW]
+  %   C         (float) Carbohydrate fraction [g/gDW]
+  %   R         (float) RNA fraction [g/gDW]
+  %   D         (float) DNA fraction [g/gDW]
+  %   L         (float) Lipid fraction [g/gDW]
+  %   F         (float) cofactor [g/gDW]
+  %   I         (float) ion [g/gDW]
+  %
+  %   Usage: [X,P,C,R,D,L,I,F] = sumBioMass(model)
+  %
+  %   Function adapted from SLIMEr: https://github.com/SysBioChalmers/SLIMEr
+  %
 
-function [X,P,C,R,D,L,I,F] = sumBioMass(model,data)
+%Load original biomass component MWs:
+%TODO: compute MW automatically from chemical formulas (check that all components have them first)
+fid = fopen('../../ComplementaryData/physiology/biomassComposition_Forster2003.tsv');
+Forster2003 = textscan(fid,'%s %s %f32 %f32 %s','Delimiter','\t','HeaderLines',1);
+data.mets   = Forster2003{1};
+data.MWs    = double(Forster2003{4});
+fclose(fid);
+
+%load additional cofactor/ion MWs:
+fid = fopen('../../ComplementaryData/physiology/biomassComposition_Cofactor_Ion.tsv');
+CofactorsIons = textscan(fid,'%s %s %f32 %f32 %s %s','Delimiter','\t','HeaderLines',1);
+data_new.mets = CofactorsIons{1};
+data_new.MWs  = double(CofactorsIons{4});
+fclose(fid);
+for i = 1:length(data_new.mets)
+    if ~ismember(data_new.mets(i),data.mets)
+        data.mets = [data.mets; data_new.mets(i)];
+        data.MWs  = [data.MWs; data_new.MWs(i)];
+    end
+end
 
 %Get main fractions:
 [P,X] = getFraction(model,data,'P',0);
@@ -44,7 +57,7 @@ disp(' ')
 
 end
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
 
 function [F,X] = getFraction(model,data,compType,X)
 
@@ -90,5 +103,5 @@ else
         F = 0;
     X = X + F;
 end
+
 end
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

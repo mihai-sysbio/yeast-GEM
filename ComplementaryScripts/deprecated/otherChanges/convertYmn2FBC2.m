@@ -9,8 +9,6 @@
 % We also had to remove "-" characters from gene names to "_", since
 % otherwise gene-reaction association information is lost for several
 % reactions in FBC v2 file.
-%
-% Simonas Marcišauskas
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Firstly loading an old COBRA version, i.e. the latest commit before

@@ -21,5 +21,3 @@
 - [ ] Done this analysis in the `master` branch of the repository
 - [ ] Checked that a similar issue does not exist already
 - [ ] If needed, asked first in the [Gitter chat room](https://gitter.im/SysBioChalmers/yeast-GEM) about the issue
-
-*Note: replace [ ] with [X] to check the box. PLEASE DELETE THIS LINE*

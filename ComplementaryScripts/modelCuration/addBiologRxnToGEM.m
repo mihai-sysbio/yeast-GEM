@@ -6,8 +6,6 @@
 %        Biolog_newRxnMet.tsv.
 %
 % NOTE: changeGeneAssociation.m is a function from COBRA
-%
-% Feiran Li     2018-08-25
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Load model:
