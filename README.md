@@ -35,7 +35,14 @@ This repository is administered by Benjamín J. Sánchez ([@BenjaSanchez](https:
 * The [RAVEN toolbox for MATLAB](https://github.com/SysBioChalmers/RAVEN).
 * A [git wrapper](https://github.com/manur/MATLAB-git) added to the search path.
 
+**NOTE:** You also require [git lfs](https://git-lfs.github.com/) if you wish to run locally any of the following two [memote](https://github.com/opencobra/memote) commands:
+* `memote run`
+* `memote report history`
+
+This is because `results.db` (the database that stores all memote results) is tracked with git lfs.
+
 ### Dependencies - Recommended Software:
+
 * For Matlab, the [libSBML MATLAB API](https://sourceforge.net/projects/sbml/files/libsbml/MATLAB%20Interface/) (version 5.17.0 is recommended).
 * [Gurobi Optimizer](http://www.gurobi.com/registration/download-reg) for any simulations.
 
