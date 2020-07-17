@@ -37,6 +37,7 @@ jobs:
 
     - name: Convert model
       run: |
+        touch .env
         python -c \
           'import ComplementaryScripts.io as io; \
           model = io.read_yeast_model(make_bigg_compliant=True); \
