@@ -35,11 +35,18 @@ jobs:
         ref: ${{ steps.setup.outputs.deployment }}
         path: ${{ steps.setup.outputs.other-repo }}
 
+    - name: Convert model
+      run: |
+        python -c \
+          'import ComplementaryScripts.io as io; \
+          model = io.read_yeast_model(make_bigg_compliant=True); \
+          io.write_yeast_model(model)'
+
     - name: Memote on push
       run: |
-        memote run --skip-unchanged
+        memote run --skip-unchanged --solver-timeout 30
         # Generate the history report on the deployment branch
-        memote report history --filename="${{ steps.setup.outputs.other-repo }}/${{ steps.setup.outputs.history }}"
+        memote report history --filename="${{ steps.setup.outputs.other-repo }}/${{ steps.setup.outputs.history }}" --solver-timeout 30
 
     - name: Auto-commit results
       uses: stefanzweifel/git-auto-commit-action@v4.4.0

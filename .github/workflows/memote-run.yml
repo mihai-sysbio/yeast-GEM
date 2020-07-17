@@ -17,8 +17,15 @@ jobs:
 
     - name: Install memote
       run: pip install -r requirements/ci-requirements.txt
-        
+
+    - name: Convert model
+      run: |
+        python -c \
+          'import ComplementaryScripts.io as io; \
+          model = io.read_yeast_model(make_bigg_compliant=True); \
+          io.write_yeast_model(model)'
+
     - name: Memote on PR
       run: |
         # Untracked build, skip saving to gh-pages
-        memote run --ignore-git
+        memote run --ignore-git --solver-timeout 30
