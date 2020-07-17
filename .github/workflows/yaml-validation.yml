@@ -18,7 +18,6 @@ jobs:
 
     - name: YAML Lint
       uses: ibiqlik/action-yamllint@v1.0.0
-      continue-on-error: true
       with:
         ## File(s) or Directory, separate by space if multiple files or folder are specified
         file_or_dir: ModelFiles/
@@ -35,7 +34,6 @@ jobs:
         python-version: '3.x'
 
     - name: Import with cobrapy
-      continue-on-error: true
       run: |
         pip install -r requirements/ci-requirements.txt
         python -c "import cobra ; cobra.io.load_yaml_model('ModelFiles/yml/yeastGEM.yml')"
