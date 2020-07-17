@@ -1,6 +1,6 @@
 name: Memote history
 
-on: [push, pull_request]
+on: push
 
 jobs:
   memote-history:
@@ -20,12 +20,6 @@ jobs:
     - name: Install memote
       run: pip install -r requirements/ci-requirements.txt
         
-    - name: Memote on PR
-      if: ${{ github.event_name == 'pull_request' }}
-      run: |
-        echo "Untracked build, skip saving to gh-pages"
-        memote run --ignore-git
-
     - name: Setup variables
       id: setup
       run: |
@@ -42,7 +36,6 @@ jobs:
         path: ${{ steps.setup.outputs.other-repo }}
 
     - name: Memote on push
-      if: ${{ github.event_name != 'pull_request' }}
       run: |
         memote run --skip-unchanged
         # Generate the history report on the deployment branch
