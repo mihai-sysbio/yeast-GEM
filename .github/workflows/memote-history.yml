@@ -25,7 +25,6 @@ jobs:
       run: |
         echo "::set-output name=history::history_report.html"
         echo "::set-output name=deployment::$(awk -F '=' '{if (! ($0 ~ /^;/) && $0 ~ /deployment/) print $2}' memote.ini | tr -d ' ')"
-        echo "::set-output name=location::$(awk -F '=' '{if (! ($0 ~ /^;/) && $0 ~ /location/) print $2}' memote.ini | tr -d ' ')"
         echo "::set-output name=other-repo::gh-pages-repo"
 
     - name: Checkout repo for gh-pages branch
@@ -36,18 +35,19 @@ jobs:
         path: ${{ steps.setup.outputs.other-repo }}
 
     - name: Convert model
-      run: |
+      run: |a
         touch .env
-        python -c \
-          'import ComplementaryScripts.io as io; \
-          model = io.read_yeast_model(make_bigg_compliant=True); \
-          io.write_yeast_model(model)'
+        python -c 'import ComplementaryScripts.io as io; model = io.read_yeast_model(make_bigg_compliant=True); io.write_yeast_model(model)'
 
-    - name: Memote on push
+
+    - name: Memote short run
       run: |
         memote run --skip-unchanged --solver-timeout 30
+
+    - name: Compute Memote history on push
+      run: |
         # Generate the history report on the deployment branch
-        memote report history --filename="${{ steps.setup.outputs.other-repo }}/${{ steps.setup.outputs.history }}" --solver-timeout 30
+        memote report history --filename="${{ steps.setup.outputs.other-repo }}/${{ steps.setup.outputs.history }}"
 
     - name: Auto-commit results
       uses: stefanzweifel/git-auto-commit-action@v4.4.0

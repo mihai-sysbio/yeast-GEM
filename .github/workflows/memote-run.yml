@@ -21,10 +21,7 @@ jobs:
     - name: Convert model
       run: |
         touch .env
-        python -c \
-          'import ComplementaryScripts.io as io; \
-          model = io.read_yeast_model(make_bigg_compliant=True); \
-          io.write_yeast_model(model)'
+        python -c 'import ComplementaryScripts.io as io; model = io.read_yeast_model(make_bigg_compliant=True); io.write_yeast_model(model)'
 
     - name: Memote on PR
       run: |
